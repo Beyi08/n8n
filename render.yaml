@@ -7,6 +7,7 @@ services:
     dockerContext: .
     dockerfilePath: Dockerfile
     plan: free
+
     envVars:
       - key: N8N_BASIC_AUTH_ACTIVE
         value: "true"
@@ -14,9 +15,21 @@ services:
         value: "Beyi08"
       - key: N8N_BASIC_AUTH_PASSWORD
         value: "325410325410Ian"
+
       - key: N8N_HOST
         value: "0.0.0.0"
       - key: N8N_PORT
         value: "5678"
+
       - key: WEBHOOK_URL
-        value: "https://n8n-instance-duju.onrender.com/"
+        value: "https://n8n-instance-duju.onrender.com"
+      - key: WEBHOOK_TUNNEL_URL
+        value: "https://n8n-instance-duju.onrender.com"
+
+      - key: DB_SQLITE_DATA_MODE
+        value: file
+
+    disk:
+      name: n8n-data
+      mountPath: /home/node/.n8n
+      sizeGB: 1
